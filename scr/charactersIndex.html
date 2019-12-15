@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Characters left</title>
+    <style>
+        #charNum {
+            border: 1px solid #dbdbdb;
+            border-radius: 3px;
+            padding: 2px;
+            font-size: 12px;
+            float: left;
+            margin-left: 4px;
+            margin-top: 8px;
+            visibility: hidden;
+        }
+
+        #char_left {
+            float: left;
+            font-family: Verdana;
+            font-size: 12px;
+            margin-top: 8px;
+            visibility: hidden;
+        }
+
+        #details {
+            border: 1px solid #333;
+        }
+    </style>
+    <script src="scripts/jquery-3.4.1.min.js"></script>
+    <script>
+        $(function () {
+            var maxLength = 100;
+            var show = false;
+            $('#details').focus(function () {
+                $(this).css('background', '#dfffff')
+            }).blur(function () {
+                $(this).css('background', 'FFF')
+            });
+
+            $('#details').keyup(function () {
+                var textarea = $(this);
+                var len = textarea.val().length;
+                if (len >= 0 && show == false) {
+                    show = true;
+                    $('#charNum').css('visibility', 'visible');
+                    $('#char_left').css('visibility', 'visible');
+                }
+                if (len <= maxLength) {
+                    $('#charNum').text(maxLength - len);
+                } else {
+                    textarea.val(textarea.val().substring(0, maxLength));
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+<textarea row="10" cols="23" id="details"></textarea></body>
+<br/>
+<span id="char_left">characters left: </span><span id="charNum"></span>
+</body>
+</html>

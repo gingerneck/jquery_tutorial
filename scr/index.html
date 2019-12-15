@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .wrapper{
+            width: 300px;
+            height: 200px;
+            margin: 10px;
+            float: left;
+            position: relative;
+            overflow: hidden;
+        }
+        img{
+            position: absolute;
+            top: 0px;
+            left: 0px;
+        }
+    </style>
+    <script src="scripts/jquery-3.4.1.min.js"></script>
+    <script>
+        $(function () {
+            $('.wrapper').hover(function () {
+                $(this).children('.front').stop().animate({'top':'300px','opacity':'0.1'},700)
+            }, function () {
+                $(this).children('.front').stop().animate({'top':'0px','opacity':'1.0'},400)
+            })
+        });
+    </script>
+</head>
+<body>
+<div class="wrapper">
+<img src="images/back.png" />
+    <img src="images/unnamed-front.png" class="front"/>
+</div>
+
+</body>
+</html>

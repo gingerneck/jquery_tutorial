@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Image Tooltip</title>
+</head>
+<style>
+    a {
+        margin: 10px;
+    }
+
+    #bigImage {
+        padding: 10px;
+        background-color: #d3d3d3;
+        border: 1px solid #BFBFBF;
+        position: absolute;
+    }
+</style>
+<script src="scripts/jquery-3.4.1.min.js"></script>
+<script>
+
+    $(function () {
+        var offsetX = 20;
+        var offsetY = 10;
+        var href;
+        $('a').hover(function (e) {
+            href = $(this).attr('href');
+            $('<img src="' + href + '" id = "bigImage" />')
+                .css('left', e.pageX + offsetX)
+                .css('top', e.pageY + offsetY)
+                .appendTo('body')
+                .hide()
+                .fadeIn(1000);
+        }, function () {
+            $('#bigImage').remove();
+        });
+        $('a').mousemove(function (e) {
+            $('#bigImage')
+                .css('left', e.pageX + offsetX)
+                .css('top', e.pageY + offsetY)
+        });
+    });
+</script>
+<body>
+
+<a href="images/unnamed-front.png"><img src="images/unnamed-front.png"/> </a>
+<a href="images/back.png"><img src="images/back.png"></a>
+
+
+</body>
+</html>
