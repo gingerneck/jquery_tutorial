@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Star rating with Hover</title>
+</head>
+<script src="scripts/jquery-3.4.1.min.js"></script>
+
+<script>
+    /*    $(function () {
+
+
+
+        })*/
+
+    $(document).ready(function () {
+        var src;
+        var nameparts = new Array();
+        var filename = new Array();
+        $('img').hover(function () {
+            src = $(this).attr('src');
+            nameparts = src.split('.');
+            filename = nameparts[0].split('-')
+            for(var i=1;i<=filename[1];i++){
+                $('body img:nth-child('+i+')').attr('src','images/star-'+i+'-gold.png');
+            }
+        }, function () {
+            for(var i=1;i<=filename[1];i++){
+                $('body img:nth-child('+i+')').attr('src','images/star-'+i+'.png');
+            }
+        });
+
+    });
+</script>
+
+<body>
+
+<img src="images/star-1.png"/><img src="images/star-2.png"/><img src="images/star-3.png"/><img src="images/star-4.png"/><img
+        src="images/star-5.png"/>
+
+</body>
+</html>
